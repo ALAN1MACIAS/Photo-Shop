@@ -1,0 +1,22 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: <%= ENV['host_postgres'] %>
+  port: <%= ENV['port_postgres'] %>
+  username: <%= ENV['username_postgres'] %>
+  password: <%= ENV['password_postgres'] %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: frikr_development
+
+test:
+  <<: *default
+  database: frikr_test
+
+production:
+  <<: *default
+  database: frikr_production
+  username: frikr
+  password: <%= ENV['FRIKR_DATABASE_PASSWORD'] %>
