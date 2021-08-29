@@ -2,7 +2,9 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.2'
+# Activeadmin
 gem 'activeadmin', github: 'activeadmin/activeadmin'
+# Devise
 gem 'devise'
 gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
@@ -39,6 +41,8 @@ group :development, :test do
 end
 
 group :development do
+  # User Annotate - documentation
+  gem 'annotate'
   gem 'figaro'
   gem 'listen', '~> 3.2'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
