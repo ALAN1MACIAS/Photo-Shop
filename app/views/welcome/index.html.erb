@@ -1,9 +1,15 @@
+<% content_for :title do %>
+  Welcome to Frikr - with Flickr, but at friki
+<% end %>
+
 <h1>welcome</h1>
 
 <% if @photos.any? %>
   <h2>Last published photos</h2>
   <% @photos.each do |photo| %>
-    <img src=<%= photo.url %> alt=<%= photo.name %> height='150'>
+    <%= link_to photo_detail_path(photo) do %>
+      <img src=<%= photo.url %> alt=<%= photo.name %> height='150'></a>
+    <% end %>
   <% end %>
 <% else %>
   <p>Be the first to post a photo</p>

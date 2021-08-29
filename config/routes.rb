@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
+  # Active Admin
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
+  # Photos controller
+  get 'photos/:id', to: 'photos#show', as: 'photo_detail'
+
+  # Welcome index
+  get 'welcome/index', to: 'welcome#index', as: 'welcome_home'
+
   root to: 'welcome#index'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

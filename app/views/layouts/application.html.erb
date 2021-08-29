@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Frikr</title>
+    <title>
+      <% if content_for?(:title) %>
+        <%= yield :title %>
+      <% else %>
+        Welcome to frikr
+      <% end %>
+    </title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +16,24 @@
   </head>
 
   <body>
-    <%= yield %>
+    <section>
+      <nav>
+        <%= link_to 'Home', welcome_home_path %>
+      </nav>
+    </section>
+
+    <hr>
+
+    <section>
+      <p class='notice'><%= notice %></p>
+      <p class='alert'><%= alert %></p>
+      <%= yield %>
+    </section>
+
+    <hr>
+
+    <section>
+      <small>Frikr Inc ¬copy; All rights reserved</small>
+    </section>
   </body>
 </html>
