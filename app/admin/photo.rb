@@ -5,14 +5,14 @@ ActiveAdmin.register Photo do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :name, :url, :description, :license, :admin_user, :visibility
+  permit_params :name, :url, :description, :license, :user_id, :visibility
   index do
     selectable_column
     id_column
     column :name
     column :description
     column :url
-    column 'Owner', :admin_user_id
+    column 'Owner', :user_id
     column :license
     column :visibility
     actions
