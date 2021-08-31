@@ -20,9 +20,9 @@
       <nav>
         <%= link_to 'Home', welcome_home_path %>
         <% if user_signed_in? %>
-          <%= link_to 'Go to', logout_path %>
+          <%= link_to 'Go to', destroy_user_session_path, method: :delete %>
         <% else %>
-          <%= link_to 'Enter', login_path  %>
+          <%= link_to 'Enter', new_user_session_path  %>
         <% end %>
       </nav>
     </section>

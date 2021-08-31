@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  #  User authentication
   devise_for :users
   # Active Admin
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -11,9 +12,9 @@ Rails.application.routes.draw do
   get 'welcome/index',    to: 'welcome#index',        as: 'welcome_home'
 
   # Users controller
-  get 'login',            to: 'users#login',          as: 'login'
-  post 'login',           to: 'users#new_session',    as: 'user_new_session'
-  get 'logout',           to: 'users#logout',         as: 'logout'
+  # get 'login',            to: 'users#login',          as: 'login'
+  # post 'login',           to: 'users#new_session',    as: 'user_new_session'
+  # get 'logout',           to: 'users#logout',         as: 'logout'
 
   root to: 'welcome#index'
 end
