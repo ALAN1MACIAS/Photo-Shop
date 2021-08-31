@@ -1,12 +1,6 @@
-<form method='post'>
-  <div>
-    <input type='text' name='email' placeholder='Enter your email' id=''>
-  </div>
-  <div>
-    <input type='password' name='password' placeholder='Enter your password' id=''>
-  </div>
+<%= form_for @user, url: {action: 'new_session'} do |f| %>
+  <%= f.text_field :email %><br><br>
+  <%= f.password_field :password %><br><br>
 
-  <div>
-    <button>Enter</button>
-  </div>
-</form>
+  <%= f.submit 'Enter' %>
+<% end %>
