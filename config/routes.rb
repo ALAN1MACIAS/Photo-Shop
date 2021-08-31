@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
 
   # Photos controller
+  get 'photos/new',       to: 'photos#new',           as: 'photo_new'
+  post 'photos',          to: 'photos#create',        as: 'photo_create'
   get 'photos/:id',       to: 'photos#show',          as: 'photo_detail'
 
   # Welcome index
