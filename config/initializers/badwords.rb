@@ -1,0 +1,1 @@
+BADWORDS = ['Baboso', 'Cretino']

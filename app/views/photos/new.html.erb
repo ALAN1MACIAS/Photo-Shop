@@ -1,10 +1,10 @@
 <%= form_for @photo, url: {action: "create"} do |f| %>
   <%= f.label :name, "Title" %>
-  <%= f.text_field :name %>
+  <%= f.text_field :name, required: true %>
   <br><br>
 
   <%= f.label :url, "URL" %>
-  <%= f.text_field :url %>
+  <%= f.text_field :url, required: true %>
   <br><br>
 
   <%= f.label :description, "Description" %>
@@ -12,11 +12,11 @@
   <br><br>
 
   <%= f.label :visibility, "Visibility" %>
-  <%= f.select :visibility, Photo::visibilities.keys.to_a %>
+  <%= f.select :visibility, Photo::visibilities.keys.to_a, required: true %>
   <br><br>
 
   <%= f.label :license, "License" %>
-  <%= f.select :license, Photo::licenses.keys.to_a %>
+  <%= f.select :license, Photo::licenses.keys.to_a, required: true %>
   <br><br>
 
   <%= f.submit "Create photo" %>

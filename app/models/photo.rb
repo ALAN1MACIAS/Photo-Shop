@@ -21,4 +21,14 @@ class Photo < ApplicationRecord
   validates :name, :url, :user_id, presence: true
   validates :license, inclusion: { in: Photo.licenses }
   validates :visibility, inclusion: { in: Photo.visibilities }
+
+  validate :badwords_not_included
+
+  def badwords_not_included
+    for badword in BADWORDS do
+      if description.downcase.include?(badword.downcase)
+        errors.add(:description, "The word #{badword} is not allowed")
+      end
+    end
+  end
 end

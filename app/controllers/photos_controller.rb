@@ -10,6 +10,9 @@ class PhotosController < ApplicationController
     @photo.user = current_user
     if @photo.save
       redirect_to photo_detail_path(@photo), notice: 'Photo created successfully'
+    else
+      flash[:alert] = "There was an error saving the photo: #{@photo.errors.full_messages.to_sentence}"
+      render :new
     end
   end
 
