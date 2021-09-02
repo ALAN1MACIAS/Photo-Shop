@@ -1,13 +1,10 @@
 class PhotosController < ApplicationController
   skip_before_action :verify_authenticity_token, only: :new_session
   before_action :authenticate_user!, only: %i[new create]
+  include PhotosHelper
 
   def index
-    @photos = if current_user
-                Photo.where(user: current_user).or(Photo.where(visibility: :pub))
-              else
-                Photo.where(visibility: :pub)
-              end
+    @photos = possible_photos
   end
 
   def new
@@ -26,13 +23,8 @@ class PhotosController < ApplicationController
   end
 
   def show
-    posible_photos = if current_user
-                       Photo.where(user: current_user).or(Photo.where(visibility: :pub))
-                     else
-                       Photo.where(visibility: :pub)
-                     end
+    posible_photos = possible_photos
     @photo = posible_photos.find_by_id(params[:id])
-
     render file: "#{Rails.root}/public/404.html", status: :not_found if @photo.nil?
   end
 
