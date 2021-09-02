@@ -1,6 +1,6 @@
 class PhotosController < ApplicationController
   skip_before_action :verify_authenticity_token, only: :new_session
-  before_action :authenticate_user!, only: %i[new create]
+  before_action :authenticate_user!, only: %i[new create edit]
   include PhotosHelper
 
   def index
@@ -9,6 +9,10 @@ class PhotosController < ApplicationController
 
   def new
     @photo = Photo.new
+  end
+
+  def my_photos
+    @photos = current_user.photos
   end
 
   def create
@@ -26,6 +30,24 @@ class PhotosController < ApplicationController
     posible_photos = possible_photos
     @photo = posible_photos.find_by_id(params[:id])
     render file: "#{Rails.root}/public/404.html", status: :not_found if @photo.nil?
+  end
+
+  def edit
+    @photo = current_user.photos.find_by_id(params[:id])
+    render file: "#{Rails.root}/public/404.html", status: :not_found if @photo.nil?
+  end
+
+  def update
+    @photo = current_user.photos.find_by_id(params[:id])
+    if @photo.nil?
+      render file: "#{Rails.root}/public/404.html", status: :not_found
+    elsif @photo.update(photo_params)
+      flash[:notice] = "The photo #{@photo.name} has been updated correctly"
+      redirect_to photo_detail_path(@photo)
+    else
+      flash[:alert] = "There was an error saving the photo #{@photo.name}"
+      render :edit
+    end
   end
 
   private

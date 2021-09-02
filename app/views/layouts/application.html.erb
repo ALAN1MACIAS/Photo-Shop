@@ -21,6 +21,7 @@
         <%= link_to 'Home', welcome_home_path %>
         <%= link_to 'List photos', photo_index_path %>
         <% if user_signed_in? %>
+          <%= link_to 'My photos', my_photos_path %>
           <%= link_to 'New photo', photo_new_path %>
           <%= link_to 'Go to', destroy_user_session_path, method: :delete %>
         <% else %>
