@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get 'photos/:id',       to: 'photos#show',          as: 'photo_detail'
   get 'photos/:id/edit',  to: 'photos#edit',          as: 'photo_edit'
   patch 'photos/:id',     to: 'photos#update',        as: 'photo_update'
+  delete 'photos/:id',    to: 'photos#destroy',       as: 'photo_destroy'
 
   # Welcome index
   get 'welcome/index',    to: 'welcome#index',        as: 'welcome_home'

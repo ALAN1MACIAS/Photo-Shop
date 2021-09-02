@@ -1,6 +1,6 @@
 class PhotosController < ApplicationController
   skip_before_action :verify_authenticity_token, only: :new_session
-  before_action :authenticate_user!, only: %i[new create edit]
+  before_action :authenticate_user!, only: %i[new create edit update destroy]
   include PhotosHelper
 
   def index
@@ -48,6 +48,13 @@ class PhotosController < ApplicationController
       flash[:alert] = "There was an error saving the photo #{@photo.name}"
       render :edit
     end
+  end
+
+  def destroy
+    @photo = current_user.photos.find_by_id(params[:id])
+    @photo.destroy
+    flash[:notice] = "The photo #{@photo.name} has been deleted correctly"
+    redirect_to :my_photos
   end
 
   private
