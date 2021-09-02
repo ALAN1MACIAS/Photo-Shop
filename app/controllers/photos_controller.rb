@@ -1,6 +1,14 @@
 class PhotosController < ApplicationController
   before_action :authenticate_user!, only: %i[new create]
 
+  def index
+    if current_user
+      @photos = Photo.where(user: current_user).or(Photo.where(visibility: :pub))
+    else
+      @photos = Photo.where(visibility: :pub)
+    end
+  end
+
   def new
     @photo = Photo.new
   end
