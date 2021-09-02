@@ -26,7 +26,14 @@ class PhotosController < ApplicationController
   end
 
   def show
-    @photo = Photo.find_by_id(params[:id])
+    posible_photos = if current_user
+                       Photo.where(user: current_user).or(Photo.where(visibility: :pub))
+                     else
+                       Photo.where(visibility: :pub)
+                     end
+    @photo = posible_photos.find_by_id(params[:id])
+
+    render file: "#{Rails.root}/public/404.html", status: :not_found if @photo.nil?
   end
 
   private
