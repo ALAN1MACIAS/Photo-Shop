@@ -19,7 +19,7 @@ class PhotosController < ApplicationController
     @photo = Photo.create(photo_params)
     @photo.user = current_user
     if @photo.save
-      redirect_to photo_detail_path(@photo), notice: 'Photo created successfully'
+      redirect_to photos_path(@photo), notice: 'Photo created successfully'
     else
       flash[:alert] = "There was an error saving the photo: #{@photo.errors.full_messages.to_sentence}"
       render :new
@@ -43,7 +43,7 @@ class PhotosController < ApplicationController
       render file: "#{Rails.root}/public/404.html", status: :not_found
     elsif @photo.update(photo_params)
       flash[:notice] = "The photo #{@photo.name} has been updated correctly"
-      redirect_to photo_detail_path(@photo)
+      redirect_to photos_path(@photo)
     else
       flash[:alert] = "There was an error saving the photo #{@photo.name}"
       render :edit

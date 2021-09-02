@@ -12,6 +12,6 @@
 <p> <%= @photo.user.email %> </p>
 
 <% if @photo.user == current_user %>
-  <%= link_to 'Edit', photo_edit_path %>
-  <%= link_to 'Delete', photo_destroy_path, method: :delete, data: {confirm: 'Are you sure?'} %>
+  <%= link_to 'Edit', edit_photo_path %>
+  <%= link_to 'Delete', photo_path, method: :delete, data: {confirm: 'Are you sure?'} %>
 <% end %>

@@ -1,24 +1,2 @@
 <img src="<%= @photo.url %>" alt="<%= @photo.name %>" height='300'>
-<%= form_for @photo, url: {action: "update"} do |f| %>
-  <%= f.label :name, "Title" %>
-  <%= f.text_field :name, required: true %>
-  <br><br>
-
-  <%= f.label :url, "URL" %>
-  <%= f.text_field :url, required: true %>
-  <br><br>
-
-  <%= f.label :description, "Description" %>
-  <%= f.text_area :description %>
-  <br><br>
-
-  <%= f.label :visibility, "Visibility" %>
-  <%= f.select :visibility, Photo::visibilities.keys.to_a, required: true %>
-  <br><br>
-
-  <%= f.label :license, "License" %>
-  <%= f.select :license, Photo::licenses.keys.to_a, required: true %>
-  <br><br>
-
-  <%= f.submit "Update photo" %>
-<% end %>
+<%= render 'photo_form', object: @photo %>
