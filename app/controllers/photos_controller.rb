@@ -1,12 +1,13 @@
 class PhotosController < ApplicationController
+  skip_before_action :verify_authenticity_token, only: :new_session
   before_action :authenticate_user!, only: %i[new create]
 
   def index
-    if current_user
-      @photos = Photo.where(user: current_user).or(Photo.where(visibility: :pub))
-    else
-      @photos = Photo.where(visibility: :pub)
-    end
+    @photos = if current_user
+                Photo.where(user: current_user).or(Photo.where(visibility: :pub))
+              else
+                Photo.where(visibility: :pub)
+              end
   end
 
   def new

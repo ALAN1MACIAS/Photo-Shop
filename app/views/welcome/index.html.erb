@@ -6,11 +6,7 @@
 
 <% if @photos.any? %>
   <h2>Last published photos</h2>
-  <% @photos.each do |photo| %>
-    <%= link_to photo_detail_path(photo) do %>
-      <img src=<%= photo.url %> alt=<%= photo.name %> height='150'></a>
-    <% end %>
-  <% end %>
+  <%= render 'photos/photos_loop' %>
 <% else %>
   <p>Be the first to post a photo</p>
 <% end %>

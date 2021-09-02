@@ -1,8 +1,7 @@
 <% content_for :title do %>
-  <h1>Listado de fotos: </h1>
+  List of photos
 <% end %>
-<% @photos.each do |photo| %>
-  <%= link_to photo_detail_path(photo) do %>
-    <img src="<%= photo.url %>" alt="<%= photo.name %>", height='150'>
-  <% end %>
-<% end %>
+
+<h1>List of photos</h1><hr>
+
+<%= render 'photos_loop' %>
