@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  namespace :api do
+    namespace :v1 do
+      get 'users/is'
+    end
+  end
   #  User authentication
   devise_for :users
   # Active Admin
@@ -10,7 +15,14 @@ Rails.application.routes.draw do
   resources :photos
 
   # Welcome index
-  get 'welcome/index',   to: 'welcome#index',        as: 'welcome_home'
+  get 'welcome/index',          to: 'welcome#index',        as: 'welcome_home'
+
+  # API
+  namespace :api do
+    namespace :v1 do
+      resources :users, expect: %i[new edit]
+    end
+  end
 
   # Users controller
   # get 'login',            to: 'users#login',          as: 'login'
