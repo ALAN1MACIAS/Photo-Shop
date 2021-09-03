@@ -3,7 +3,7 @@ class Api::V1::PhotosController < ApplicationController
   before_action :set_photo, only: %i[show update destroy]
 
   def index
-    @photos = Photo.all
+    @photos = Photo.all.paginate(page: params[:page], per_page: 5)
     render json: @photos
   end
 
