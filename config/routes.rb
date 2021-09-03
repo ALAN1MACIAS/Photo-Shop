@@ -11,16 +11,17 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
 
   # Photos controller
-  get 'photos/my_photos',       to: 'photos#my_photos',     as: 'my_photos'
+  get 'photos/my_photos', to: 'photos#my_photos',   as: 'my_photos'
   resources :photos
 
   # Welcome index
-  get 'welcome/index',          to: 'welcome#index',        as: 'welcome_home'
+  get 'welcome/index',    to: 'welcome#index',      as: 'welcome_home'
 
   # API
   namespace :api do
     namespace :v1 do
       resources :users, expect: %i[new edit]
+      resources :photos, expect: %i[new edit]
     end
   end
 
