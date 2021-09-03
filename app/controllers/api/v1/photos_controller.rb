@@ -4,15 +4,18 @@ class Api::V1::PhotosController < ApplicationController
 
   def index
     @photos = Photo.all
+    render json: @photos
   end
 
-  def show; end
+  def show
+    render json: @photo
+  end
 
   def create
     @photo = Photo.new(photo_params)
 
     if @photo.save
-      render :show, status: :created, location: @photo
+      render json: @photo
     else
       render json: @photo.errors, status: :unprocessable_entity
     end
@@ -20,7 +23,7 @@ class Api::V1::PhotosController < ApplicationController
 
   def update
     if @photo.update(photo_params)
-      render :show, status: :ok, location: @photo
+      render json: @photo
     else
       render json: @photo.errors, status: :unprocessable_entity
     end

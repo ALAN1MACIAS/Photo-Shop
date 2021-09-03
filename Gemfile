@@ -4,6 +4,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.7.2'
 # Activeadmin
 gem 'activeadmin', github: 'activeadmin/activeadmin'
+# Serializer
+gem 'active_model_serializers'
 # Devise
 gem 'devise'
 gem 'inherited_resources', github: 'activeadmin/inherited_resources'
