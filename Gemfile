@@ -9,6 +9,7 @@ gem 'active_model_serializers'
 # Devise
 gem 'devise'
 gem 'inherited_resources', github: 'activeadmin/inherited_resources'
+gem 'rack-attack'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.0.4'
 # Use postgresql as the database for Active Record
