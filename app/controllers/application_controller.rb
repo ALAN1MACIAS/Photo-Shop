@@ -2,6 +2,15 @@ class ApplicationController < ActionController::Base
   include ActionController::HttpAuthentication::Token::ControllerMethods
   protect_from_forgery with: :null_session
   before_action :authenticate, if: -> { request.format.json? }
+  before_action :set_locale
+
+  def set_locale
+    I18n.locale = params[:locale] || I18n.default_locale
+  end
+
+  def default_url_options(options = {})
+    { locale: I18n.locale }
+  end
 
   def authenticate!
     @current_user || render_unauthorized

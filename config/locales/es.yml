@@ -1,0 +1,40 @@
+es:
+  hello: 'Hola Mundo'
+  photos:
+    my_photos:
+      title: 'Mis fotos'
+    index:
+      title: 'Lista de fotos'
+    show:
+      description: 'Descripción'
+      author: 'Autor'
+      edit: 'Editar'
+      delete: 'Eliminar'
+    form:
+      title: 'Titulo'
+      url: 'URL'
+      description: 'Descripción'
+      visibility: 'Visibilidad'
+      license: 'Licensia'
+      create: 'Crear foto'
+      update: 'Actualizar foto'
+  welcome:
+    index:
+      title: 'Bienvenido a Frikr - con Flickr, pero en friki'
+      title_page: 'Bienvenido'
+      status_1: 'Últimas fotos publicadas'
+      status_2: 'Sé el primero en publicar una foto'
+  layouts:
+    application:
+      home: 'Inicio'
+      list_photos: 'Lista de fotos'
+      my_photos: 'Mis fotos'
+      new_photo: 'Nueva foto'
+      go_to: 'Salir'
+      log_in: 'Iniciar'
+      foother: 'Curso de Ruby on Rails. todos los derechos recervador'
+  users:
+    login:
+      password: 'Contraseña'
+      email: 'Correo'
+      log_in: 'Iniciar'

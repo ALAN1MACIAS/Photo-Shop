@@ -18,14 +18,14 @@
   <body>
     <section>
       <nav>
-        <%= link_to 'Home', welcome_home_path %>
-        <%= link_to 'List photos', photos_path %>
+        <%= link_to t('.home'), welcome_home_path %>
+        <%= link_to t('.list_photos'), photos_path %>
         <% if user_signed_in? %>
-          <%= link_to 'My photos', my_photos_path %>
-          <%= link_to 'New photo', new_photo_path %>
-          <%= link_to 'Go to', destroy_user_session_path, method: :delete %>
+          <%= link_to t('.my_photos'), my_photos_path %>
+          <%= link_to t('.new_photo'), new_photo_path %>
+          <%= link_to t('.go_to'), destroy_user_session_path, method: :delete %>
         <% else %>
-          <%= link_to 'Enter', new_user_session_path  %>
+          <%= link_to t('.log_in'), new_user_session_path  %>
         <% end %>
       </nav>
     </section>
@@ -41,7 +41,7 @@
     <hr>
 
     <section>
-      <small>Frikr Inc &copy; All rights reserved</small>
+      <small><%= t('.foother') %></small>
     </section>
   </body>
 </html>

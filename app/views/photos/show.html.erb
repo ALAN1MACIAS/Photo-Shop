@@ -5,13 +5,13 @@
 <h1> <%= @photo.name %> </h1>
 <img src=<%= @photo.url %> alt=<%= @photo.name %> height='300'>
 
-<h2>Desciption: </h2>
+<h2><%= t('.description')%>: </h2>
 <p> <%= @photo.description %> </p>
 
-<h2>Author: </h2>
+<h2><%= t('.author')%>: </h2>
 <p> <%= @photo.user.email %> </p>
 
 <% if @photo.user == current_user %>
-  <%= link_to 'Edit', edit_photo_path %>
-  <%= link_to 'Delete', photo_path, method: :delete, data: {confirm: 'Are you sure?'} %>
+  <%= link_to t('.edit'), edit_photo_path %>
+  <%= link_to t('.delete'), photo_path, method: :delete, data: {confirm: 'Are you sure?'} %>
 <% end %>

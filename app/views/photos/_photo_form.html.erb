@@ -1,27 +1,27 @@
 <%= form_for @photo do |f| %>
-  <%= f.label :name, "Title" %>
+  <%= f.label :name, t('photos.form.title') %>
   <%= f.text_field :name, required: true %>
   <br><br>
 
-  <%= f.label :url, "URL" %>
+  <%= f.label :url, t('photos.form.url') %>
   <%= f.text_field :url, required: true %>
   <br><br>
 
-  <%= f.label :description, "Description" %>
+  <%= f.label :description, t('photos.form.description') %>
   <%= f.text_area :description %>
   <br><br>
 
-  <%= f.label :visibility, "Visibility" %>
+  <%= f.label :visibility, t('photos.form.visibility') %>
   <%= f.select :visibility, Photo::visibilities.keys.to_a, required: true %>
   <br><br>
 
-  <%= f.label :license, "License" %>
+  <%= f.label :license, t('photos.form.license') %>
   <%= f.select :license, Photo::licenses.keys.to_a, required: true %>
   <br><br>
 
   <% if @photo.new_record? %>
-    <%= f.submit "Create photo" %>
+    <%= f.submit t('photos.form.create') %>
   <% else %>
-    <%= f.submit "Update photo" %>
+    <%= f.submit t('photos.form.update') %>
   <% end %>
 <% end %>

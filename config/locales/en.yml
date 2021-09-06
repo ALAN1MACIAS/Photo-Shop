@@ -30,4 +30,42 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  hello: 'Hello world'
+  photos:
+    my_photos:
+      title: 'My photos'
+    index:
+      title: 'List of photos'
+    show:
+      description: 'Desciption'
+      author: 'Author'
+      edit: 'Edit'
+      delete: 'Delete'
+    form:
+      title: 'Title'
+      url: 'URL'
+      description: 'Description'
+      visibility: 'Visibility'
+      license: 'License'
+      create: 'Create photo'
+      update: 'Update photo'
+  welcome:
+    index:
+      title: 'Welcome to Frikr - with Flickr, but at friki'
+      title_page: 'welcome'
+      status_1: 'Last published photos'
+      status_2: 'Be the first to post a photo'
+  layouts:
+    application:
+      home: 'Home'
+      list_photos: 'List photos'
+      my_photos: 'My photos'
+      go_to: 'Go to'
+      new_photo: 'New photo'
+      log_in: 'Log in'
+      foother: 'Ruby on Rails course &copy; All rights reserved'
+  users:
+    login:
+      password: 'Password'
+      email: 'E-mail'
+      log_in: 'Log in'

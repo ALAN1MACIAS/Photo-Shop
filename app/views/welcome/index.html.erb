@@ -1,12 +1,12 @@
 <% content_for :title do %>
-  Welcome to Frikr - with Flickr, but at friki
+  <%= t('.title') %>
 <% end %>
 
-<h1>welcome</h1>
+<h1><%= t('.title_page')%></h1>
 
 <% if @photos.any? %>
-  <h2>Last published photos</h2>
+  <h2><%= t('.status_1')%></h2>
   <%= render 'photos/photos_loop' %>
 <% else %>
-  <p>Be the first to post a photo</p>
+  <p><%= t('.status_2')%></p>
 <% end %>
