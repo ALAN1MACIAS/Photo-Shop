@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   # API
   namespace :api do
     namespace :v1 do
-      resources :users, expect: %i[new edit]
+      resources :users, expect: %i[new edit index]
       resources :photos, expect: %i[new edit]
     end
   end

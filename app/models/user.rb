@@ -3,6 +3,7 @@
 # Table name: users
 #
 #  id                     :bigint(8)        not null, primary key
+#  api_key                :string
 #  current_sign_in_at     :datetime
 #  current_sign_in_ip     :inet
 #  email                  :string           default(""), not null
@@ -23,6 +24,11 @@
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
 class User < ApplicationRecord
+  # Assign an API Key on create
+  before_create do |user|
+    user.api_key = user.generate_api_key
+  end
+
   has_many :photos
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -31,5 +37,13 @@ class User < ApplicationRecord
 
   def to_s
     name
+  end
+
+  # Generate an unique API Key
+  def generate_api_key
+    loop do
+      token = Devise.friendly_token
+      break token unless User.where(api_key: token).first
+    end
   end
 end
