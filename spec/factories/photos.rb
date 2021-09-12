@@ -14,9 +14,10 @@
 #
 FactoryBot.define do
   factory :photo do
-    name { "MyString" }
-    url { "MyString" }
-    description { "MyText" }
-    license { 1 }
+    name { Faker::Name.name }
+    url { Faker::Company.logo }
+    description { Faker::Company.suffix }
+    license { Faker::Number.between(0, 2) }
+    visibility { Faker::Number.between(0, 1) }
   end
 end
