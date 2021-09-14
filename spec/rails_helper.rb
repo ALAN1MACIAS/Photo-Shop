@@ -7,6 +7,9 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 
+require 'devise'
+require 'warden'
+
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
     # Choose a test framework:
@@ -46,6 +49,8 @@ rescue ActiveRecord::PendingMigrationError => e
 end
 RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
+  config.include Devise::TestHelpers, type: :requests
+  config.include Warden::Test::Helpers
 
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction
