@@ -9,6 +9,7 @@ require 'rspec/rails'
 
 require 'devise'
 require 'warden'
+require 'capybara/rspec'
 
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
@@ -51,6 +52,7 @@ RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
   config.include Devise::TestHelpers, type: :requests
   config.include Warden::Test::Helpers
+  config.include Capybara::DSL
 
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction
